@@ -26,26 +26,34 @@
             :key="service.name"
           >
             <p class="service-number">Service #{{ sindex + 1 }}</p>
-            <el-select value-key="id" v-model="offers[oindex].services[sindex]">
-              <el-option
-                v-for="serviceOption in available_services"
-                :label="serviceOption.name"
-                :value="serviceOption"
-                :key="serviceOption.id"
-                >{{ serviceOption.name }}</el-option
+            <div class="service-option">
+              <el-select
+                value-key="id"
+                v-model="offers[oindex].services[sindex]"
               >
-            </el-select>
-            <div class="service-cost">
-              {{ offers[oindex].services[sindex].cost }} €
+                <el-option
+                  v-for="serviceOption in available_services"
+                  :label="serviceOption.name"
+                  :value="serviceOption"
+                  :key="serviceOption.id"
+                  >{{ serviceOption.name }}</el-option
+                >
+              </el-select>
+              <div class="service-cost">
+                {{ offers[oindex].services[sindex].cost }} €
+              </div>
             </div>
+            <p class="service-number">Products:</p>
+            <div class="service-products"></div>
           </div>
           <div class="add-service-btn-wrapper">
             <el-button
               @click="addService(oindex)"
               type="primary"
               icon="el-icon-plus"
-              circle
-            ></el-button>
+              size="small"
+              >Service</el-button
+            >
           </div>
         </el-form-item>
         <!-- <el-form-item label="Discount"> </el-form-item> -->
@@ -165,30 +173,39 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .offer {
   border: 1px solid blue;
   padding: 10px;
   border-radius: 15px;
   margin: 20px auto;
   width: 700px;
-}
+  .services-form-item {
+    width: 500px;
+    margin: auto;
+  }
 
-.services-form-item {
-  width: 500px;
-  margin: auto;
-}
-
-.add-service-btn-wrapper {
-  text-align: end;
+  .add-service-btn-wrapper {
+    text-align: end;
+  }
 }
 
 .service {
-  border: 1px solid green;
+  // border: 1px solid green;
   margin-bottom: 10px;
-}
-
-.service-number {
-  text-align: start;
+  .service-option {
+    // border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+  }
+  .service-cost {
+    font-weight: 800;
+  }
+  .service-number {
+    text-align: start;
+    font-style: italic;
+    padding: 0;
+    margin: 0;
+  }
 }
 </style>
