@@ -2,11 +2,29 @@
   <div class="home">
     <h1>ASPIS Offers</h1>
     <h3 v-if="!offers.length">You have no offers at the moment...</h3>
-    <el-form>
-      <div class="offer" v-for="offer in offers" :key="offer.name">
+    <el-form label-position="top">
+      <div class="offer" v-for="(offer, oindex) in offers" :key="offer.name">
         <el-form-item label="Client">
-          <el-input></el-input>
+          <el-select
+            v-model="offers[oindex].client.name"
+            style="width: 450px"
+            placeholder="Select client"
+          >
+            <el-option
+              v-for="client in available_clients"
+              :label="client.name"
+              :value="client.name"
+              :key="client.name"
+            ></el-option>
+          </el-select>
         </el-form-item>
+        <el-form-item class="services-form-item" label="Services">
+          <div class="add-service-btn-wrapper">
+            <el-button type="primary" icon="el-icon-plus" circle></el-button>
+          </div>
+        </el-form-item>
+        <!-- <el-form-item label="Discount"> </el-form-item> -->
+        <!-- <el-divider></el-divider> -->
       </div>
     </el-form>
     <el-row>
@@ -19,13 +37,16 @@
         >Add offer</el-button
       >
     </el-row>
+    <small>
+      <pre>{{ offers }}</pre>
+    </small>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 
-let available_hotels = [
+let available_clients = [
   {
     name: "Kernos Beach",
     email: "kernos@beach.gr",
@@ -33,12 +54,7 @@ let available_hotels = [
   },
   {
     name: "The Artemis Palace",
-    email: "kernos@beach.gr",
-    img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-  },
-  {
-    name: "Knossos Royal",
-    email: "mail@test.gr",
+    email: "artemis@beach.gr",
     img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
   },
   {
@@ -65,16 +81,19 @@ let available_services = [
 
 let available_products = [
   {
+    id: 1,
     name: "Total block",
     cost: 15,
     qty: 1,
   },
   {
+    id: 2,
     name: "Tunel",
     cost: 30,
     qty: 1,
   },
   {
+    id: 3,
     name: "UV GT200",
     cost: 90,
     qty: 1,
@@ -86,14 +105,14 @@ export default {
   components: {},
   data() {
     return {
-      available_hotels,
+      available_clients,
       available_services,
       available_products,
       offers: [
-        {
-          client: "Creta Maris",
-          services: [],
-        },
+        // {
+        //   client: "Creta Maris",
+        //   services: [],
+        // },
       ],
     };
   },
@@ -101,8 +120,14 @@ export default {
     addOffer() {
       console.log("Offer added!");
       this.offers.push({
-        client: "Creta Maris",
-        services: [],
+        client: {},
+        services: [
+          {
+            name: "",
+            cost: 0,
+            required_products: [],
+          },
+        ],
       });
     },
   },
@@ -116,5 +141,14 @@ export default {
   border-radius: 15px;
   margin: 20px auto;
   width: 700px;
+}
+
+.services-form-item {
+  width: 500px;
+  margin: auto;
+}
+
+.add-service-btn-wrapper {
+  text-align: end;
 }
 </style>
