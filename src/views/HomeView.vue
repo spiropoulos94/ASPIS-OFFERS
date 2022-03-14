@@ -1,13 +1,11 @@
 <template>
   <div class="home">
     <h1>ASPIS Offers</h1>
+    <h3>You have no offers at the moment...</h3>
     <el-row>
-      <el-button>Default</el-button>
-      <el-button type="primary">Primary</el-button>
-      <el-button type="success">Success</el-button>
-      <el-button type="info">Info</el-button>
-      <el-button type="warning">Warning</el-button>
-      <el-button type="danger">Danger</el-button>
+      <el-button style="width: 400px" icon="el-icon-plus" plain type="primary"
+        >Add offer</el-button
+      >
     </el-row>
   </div>
 </template>
@@ -38,12 +36,48 @@ let hotels = [
   },
 ];
 
+let services = [
+  {
+    name: "Apentomwsh",
+    cost: 15,
+  },
+  {
+    name: "Apolymansh",
+    cost: 30,
+  },
+  {
+    name: "Ypokapnismos",
+    cost: 30,
+  },
+];
+
+let products = [
+  {
+    name: "Total block",
+    cost: 15,
+    qty: 1,
+  },
+  {
+    name: "Tunel",
+    cost: 30,
+    qty: 1,
+  },
+  {
+    name: "UV GT200",
+    cost: 90,
+    qty: 1,
+  },
+];
+
 export default {
   name: "HomeView",
   components: {},
   data() {
     return {
       hotels,
+      services,
+      products,
+      offers: [],
     };
   },
 };
