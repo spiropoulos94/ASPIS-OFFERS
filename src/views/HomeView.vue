@@ -105,9 +105,10 @@ let available_services = [
     id: 1,
     name: "Apentomwsh",
     cost: 15,
+    requred_products: [],
   },
-  { id: 2, name: "Apolymansh", cost: 30 },
-  { id: 3, name: "Ypokapnismos", cost: 45 },
+  { id: 2, name: "Apolymansh", cost: 30, requred_products: [] },
+  { id: 3, name: "Ypokapnismos", cost: 45, requred_products: [] },
 ];
 
 let available_products = [
@@ -152,22 +153,12 @@ export default {
       console.log("Offer added!");
       this.offers.push({
         client: {},
-        services: [
-          {
-            name: "",
-            cost: 0,
-            required_products: [],
-          },
-        ],
+        services: [available_services[0]],
       });
     },
     addService(offerIndex) {
       console.log("Service added", offerIndex);
-      this.offers[offerIndex].services.push({
-        name: "",
-        cost: 0,
-        required_products: [],
-      });
+      this.offers[offerIndex].services.push(available_services[0]);
     },
   },
 };
