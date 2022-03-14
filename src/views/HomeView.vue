@@ -1,7 +1,14 @@
 <template>
   <div class="home">
     <h1>ASPIS Offers</h1>
-    <h3>You have no offers at the moment...</h3>
+    <h3 v-if="!offers.length">You have no offers at the moment...</h3>
+    <el-form>
+      <div class="offer" v-for="offer in offers" :key="offer.name">
+        <el-form-item label="Client">
+          <el-input></el-input>
+        </el-form-item>
+      </div>
+    </el-form>
     <el-row>
       <el-button
         style="width: 400px"
@@ -82,17 +89,32 @@ export default {
       available_hotels,
       available_services,
       available_products,
-      offers: [],
+      offers: [
+        {
+          client: "Creta Maris",
+          services: [],
+        },
+      ],
     };
   },
   methods: {
     addOffer() {
       console.log("Offer added!");
       this.offers.push({
-        client: "",
+        client: "Creta Maris",
         services: [],
       });
     },
   },
 };
 </script>
+
+<style>
+.offer {
+  border: 1px solid blue;
+  padding: 10px;
+  border-radius: 15px;
+  margin: 20px auto;
+  width: 700px;
+}
+</style>
