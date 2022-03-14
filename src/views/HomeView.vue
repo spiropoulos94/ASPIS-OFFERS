@@ -132,6 +132,37 @@ let available_products = [
   },
 ];
 
+let offersDummyData = [
+  {
+    client: {
+      id: 2,
+      name: "The Artemis Palace",
+      email: "artemis@beach.gr",
+      img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    services: [
+      {
+        id: 1,
+        name: "Apentomwsh",
+        cost: 15,
+        requred_products: [],
+      },
+      {
+        id: 2,
+        name: "Apolymansh",
+        cost: 30,
+        requred_products: [],
+      },
+      {
+        id: 3,
+        name: "Ypokapnismos",
+        cost: 45,
+        requred_products: [],
+      },
+    ],
+  },
+];
+
 export default {
   name: "HomeView",
   components: {},
@@ -140,12 +171,7 @@ export default {
       available_clients,
       available_services,
       available_products,
-      offers: [
-        // {
-        //   client: "Creta Maris",
-        //   services: [],
-        // },
-      ],
+      offers: offersDummyData, // bale adeio array meta
     };
   },
   methods: {
