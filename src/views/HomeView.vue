@@ -3,7 +3,12 @@
     <h1>ASPIS Offers</h1>
     <h3>You have no offers at the moment...</h3>
     <el-row>
-      <el-button style="width: 400px" icon="el-icon-plus" plain type="primary"
+      <el-button
+        style="width: 400px"
+        icon="el-icon-plus"
+        plain
+        type="primary"
+        @click="addOffer"
         >Add offer</el-button
       >
     </el-row>
@@ -13,7 +18,7 @@
 <script>
 // @ is an alias to /src
 
-let hotels = [
+let available_hotels = [
   {
     name: "Kernos Beach",
     email: "kernos@beach.gr",
@@ -36,7 +41,7 @@ let hotels = [
   },
 ];
 
-let services = [
+let available_services = [
   {
     name: "Apentomwsh",
     cost: 15,
@@ -51,7 +56,7 @@ let services = [
   },
 ];
 
-let products = [
+let available_products = [
   {
     name: "Total block",
     cost: 15,
@@ -74,11 +79,20 @@ export default {
   components: {},
   data() {
     return {
-      hotels,
-      services,
-      products,
+      available_hotels,
+      available_services,
+      available_products,
       offers: [],
     };
+  },
+  methods: {
+    addOffer() {
+      console.log("Offer added!");
+      this.offers.push({
+        client: "",
+        services: [],
+      });
+    },
   },
 };
 </script>
