@@ -35,6 +35,9 @@
                 >{{ serviceOption.name }}</el-option
               >
             </el-select>
+            <div class="service-cost">
+              {{ offers[oindex].services[sindex].cost }} €
+            </div>
           </div>
           <div class="add-service-btn-wrapper">
             <el-button
@@ -142,11 +145,11 @@ export default {
       this.offers.push({
         client: {},
         services: [
-          // {
-          //   name: "",
-          //   cost: 0,
-          //   required_products: [],
-          // },
+          {
+            name: "",
+            cost: 0,
+            required_products: [],
+          },
         ],
       });
     },
