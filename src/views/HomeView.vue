@@ -45,12 +45,28 @@
             </div>
             <!-- <el-switch v-model="true"></el-switch> -->
             <p
-              v-if="offers[oindex].services[sindex].required_products.length"
+              v-if="
+                offers[oindex].services[sindex].required_products.length === 0
+              "
               class="service-small-heading"
             >
               Products:
             </p>
-            <div class="service-products"></div>
+            <div class="service-products">
+              <!-- v-for="(product, pindex) in offers[oindex].services[sindex]
+                  .required_products"
+                :key="product.name + pindex" -->
+              <div class="added-product">
+                <el-select>
+                  <el-option>1</el-option>
+                  <el-option>2</el-option>
+                  <el-option>3</el-option>
+                </el-select>
+              </div>
+              <el-button icon="el-icon-plus" size="small" plain type="primary"
+                >Product</el-button
+              >
+            </div>
           </div>
           <div class="add-service-btn-wrapper">
             <el-button
@@ -231,6 +247,17 @@ export default {
     font-style: italic;
     padding: 0;
     margin: 0;
+  }
+  .added-product {
+    // background: red;
+    margin-top: 5px;
+    text-align: start;
+    button {
+      margin-left: 15px;
+    }
+  }
+  .service-products {
+    text-align: end;
   }
 }
 </style>
