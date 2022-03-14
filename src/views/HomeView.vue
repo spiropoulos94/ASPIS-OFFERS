@@ -25,7 +25,7 @@
             v-for="(service, sindex) in offers[oindex].services"
             :key="service.name"
           >
-            <p class="service-number">Service #{{ sindex + 1 }}</p>
+            <p class="service-small-heading">Service #{{ sindex + 1 }}</p>
             <div class="service-option">
               <el-select
                 value-key="id"
@@ -43,7 +43,13 @@
                 {{ offers[oindex].services[sindex].cost }} €
               </div>
             </div>
-            <p class="service-number">Products:</p>
+            <!-- <el-switch v-model="true"></el-switch> -->
+            <p
+              v-if="offers[oindex].services[sindex].required_products.length"
+              class="service-small-heading"
+            >
+              Products:
+            </p>
             <div class="service-products"></div>
           </div>
           <div class="add-service-btn-wrapper">
@@ -105,10 +111,10 @@ let available_services = [
     id: 1,
     name: "Apentomwsh",
     cost: 15,
-    requred_products: [],
+    required_products: [],
   },
-  { id: 2, name: "Apolymansh", cost: 30, requred_products: [] },
-  { id: 3, name: "Ypokapnismos", cost: 45, requred_products: [] },
+  { id: 2, name: "Apolymansh", cost: 30, required_products: [] },
+  { id: 3, name: "Ypokapnismos", cost: 45, required_products: [] },
 ];
 
 let available_products = [
@@ -145,19 +151,19 @@ let offersDummyData = [
         id: 1,
         name: "Apentomwsh",
         cost: 15,
-        requred_products: [],
+        required_products: [],
       },
       {
         id: 2,
         name: "Apolymansh",
         cost: 30,
-        requred_products: [],
+        required_products: [],
       },
       {
         id: 3,
         name: "Ypokapnismos",
         cost: 45,
-        requred_products: [],
+        required_products: [],
       },
     ],
   },
@@ -208,7 +214,9 @@ export default {
 }
 
 .service {
-  // border: 1px solid green;
+  border: 1px solid green;
+  border-radius: 15px;
+  padding: 10px;
   margin-bottom: 10px;
   .service-option {
     // border: 1px solid red;
@@ -218,7 +226,7 @@ export default {
   .service-cost {
     font-weight: 800;
   }
-  .service-number {
+  .service-small-heading {
     text-align: start;
     font-style: italic;
     padding: 0;
