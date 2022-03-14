@@ -6,21 +6,43 @@
       <div class="offer" v-for="(offer, oindex) in offers" :key="offer.name">
         <el-form-item label="Client">
           <el-select
-            v-model="offers[oindex].client.name"
+            v-model="offers[oindex].client"
             style="width: 450px"
             placeholder="Select client"
+            value-key="id"
           >
             <el-option
               v-for="client in available_clients"
               :label="client.name"
-              :value="client.name"
-              :key="client.name"
+              :value="client"
+              :key="client.id"
             ></el-option>
           </el-select>
         </el-form-item>
         <el-form-item class="services-form-item" label="Services">
+          <div
+            class="service"
+            v-for="(service, sindex) in offers[oindex].services"
+            :key="service.name"
+          >
+            <p class="service-number">Service #{{ sindex + 1 }}</p>
+            <el-select value-key="id" v-model="offers[oindex].services[sindex]">
+              <el-option
+                v-for="serviceOption in available_services"
+                :label="serviceOption.name"
+                :value="serviceOption"
+                :key="serviceOption.id"
+                >{{ serviceOption.name }}</el-option
+              >
+            </el-select>
+          </div>
           <div class="add-service-btn-wrapper">
-            <el-button type="primary" icon="el-icon-plus" circle></el-button>
+            <el-button
+              @click="addService(oindex)"
+              type="primary"
+              icon="el-icon-plus"
+              circle
+            ></el-button>
           </div>
         </el-form-item>
         <!-- <el-form-item label="Discount"> </el-form-item> -->
@@ -48,16 +70,19 @@
 
 let available_clients = [
   {
+    id: 1,
     name: "Kernos Beach",
     email: "kernos@beach.gr",
     img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
   },
   {
+    id: 2,
     name: "The Artemis Palace",
     email: "artemis@beach.gr",
     img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
   },
   {
+    id: 3,
     name: "Knossos Royal",
     email: "mail@test.gr",
     img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
@@ -66,17 +91,12 @@ let available_clients = [
 
 let available_services = [
   {
+    id: 1,
     name: "Apentomwsh",
     cost: 15,
   },
-  {
-    name: "Apolymansh",
-    cost: 30,
-  },
-  {
-    name: "Ypokapnismos",
-    cost: 30,
-  },
+  { id: 2, name: "Apolymansh", cost: 30 },
+  { id: 3, name: "Ypokapnismos", cost: 45 },
 ];
 
 let available_products = [
@@ -122,12 +142,20 @@ export default {
       this.offers.push({
         client: {},
         services: [
-          {
-            name: "",
-            cost: 0,
-            required_products: [],
-          },
+          // {
+          //   name: "",
+          //   cost: 0,
+          //   required_products: [],
+          // },
         ],
+      });
+    },
+    addService(offerIndex) {
+      console.log("Service added", offerIndex);
+      this.offers[offerIndex].services.push({
+        name: "",
+        cost: 0,
+        required_products: [],
       });
     },
   },
@@ -150,5 +178,14 @@ export default {
 
 .add-service-btn-wrapper {
   text-align: end;
+}
+
+.service {
+  border: 1px solid green;
+  margin-bottom: 10px;
+}
+
+.service-number {
+  text-align: start;
 }
 </style>
