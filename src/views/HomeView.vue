@@ -56,14 +56,26 @@
               <!-- v-for="(product, pindex) in offers[oindex].services[sindex]
                   .required_products"
                 :key="product.name + pindex" -->
-              <div class="added-product">
-                <el-select>
+              <div
+                v-for="(product, pindex) in offers[oindex].services[sindex]
+                  .required_products"
+                class="added-product"
+                :key="product.id + pindex"
+              >
+                <el-select
+                  v-model="
+                    offers[oindex].services[sindex].required_products[pindex]
+                  "
+                >
                   <el-option>1</el-option>
-                  <el-option>2</el-option>
-                  <el-option>3</el-option>
                 </el-select>
               </div>
-              <el-button icon="el-icon-plus" size="small" plain type="primary"
+              <el-button
+                @click="addProduct"
+                icon="el-icon-plus"
+                size="small"
+                plain
+                type="primary"
                 >Product</el-button
               >
             </div>
@@ -207,6 +219,11 @@ export default {
     addService(offerIndex) {
       console.log("Service added", offerIndex);
       this.offers[offerIndex].services.push(available_services[0]);
+    },
+    addProduct(offerIndex, serviceIndex) {
+      this.offers[offerIndex].services[serviceIndex].push(
+        available_products[0]
+      );
     },
   },
 };
