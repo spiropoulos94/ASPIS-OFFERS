@@ -71,7 +71,7 @@
                 </el-select>
               </div>
               <el-button
-                @click="addProduct"
+                @click="addProduct(oindex, sindex)"
                 icon="el-icon-plus"
                 size="small"
                 plain
@@ -221,7 +221,8 @@ export default {
       this.offers[offerIndex].services.push(available_services[0]);
     },
     addProduct(offerIndex, serviceIndex) {
-      this.offers[offerIndex].services[serviceIndex].push(
+      console.log(this.offers, { offerIndex, serviceIndex });
+      this.offers[offerIndex].services[serviceIndex].required_products.push(
         available_products[0]
       );
     },
