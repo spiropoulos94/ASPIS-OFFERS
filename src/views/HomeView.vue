@@ -61,13 +61,22 @@
                     offers[oindex].services[sindex].required_products[pindex]
                   "
                 >
-                  <el-option>1</el-option>
+                  <el-option
+                    v-for="(productOption, pOptionIndex) in available_products"
+                    :label="productOption.name"
+                    :value="productOption"
+                    :key="productOption.id + pOptionIndex"
+                    :value-key="productOption.id + pOptionIndex"
+                  ></el-option>
                 </el-select>
                 <span class="multiply-divider">x</span>
                 <el-input-number
                   :min="1"
                   size="mini"
-                  v-model="num4"
+                  v-model="
+                    offers[oindex].services[sindex].required_products[pindex]
+                      .qty
+                  "
                 ></el-input-number>
               </div>
               <el-button
@@ -76,6 +85,10 @@
                 size="small"
                 plain
                 type="primary"
+                :disabled="
+                  offers[oindex].services[sindex].required_products.length ===
+                  available_products.length
+                "
                 >Product</el-button
               >
             </div>
@@ -86,6 +99,9 @@
               type="primary"
               icon="el-icon-plus"
               size="small"
+              :disabled="
+                offers[oindex].services.length === available_services.length
+              "
               >Service</el-button
             >
           </div>
@@ -223,6 +239,9 @@ export default {
     },
     addProduct(offerIndex, serviceIndex) {
       console.log(this.offers, { offerIndex, serviceIndex });
+      // let productIds = this.offers[offerIndex].services[
+      //   serviceIndex
+      // ].required_products.map((p) => p.id);
       this.offers[offerIndex].services[serviceIndex].required_products.push(
         available_products[0]
       );
