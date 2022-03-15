@@ -4,7 +4,7 @@
     <h3 v-if="!offers.length">You have no offers at the moment...</h3>
     <el-form label-position="top">
       <div class="offer" v-for="(offer, oindex) in offers" :key="offer.name">
-        <el-form-item label="Client">
+        <el-form-item class="client" label="Client">
           <el-select
             v-model="offers[oindex].client"
             style="width: 450px"
@@ -19,7 +19,7 @@
             ></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item class="services-form-item" label="Services">
+        <el-form-item class="services-form-item" label="SERVICES">
           <div
             class="service"
             v-for="(service, sindex) in offers[oindex].services"
@@ -84,7 +84,7 @@
     </el-form>
     <el-row>
       <el-button
-        style="width: 400px"
+        style="width: 500px"
         icon="el-icon-plus"
         plain
         type="primary"
@@ -218,12 +218,19 @@ export default {
   padding: 10px;
   border-radius: 15px;
   margin: 20px auto;
-  width: 700px;
-  .services-form-item {
-    width: 500px;
-    margin: auto;
+  max-width: 1200px;
+  .client {
+    label {
+      font-size: 1.75rem;
+    }
   }
-
+  .services-form-item {
+    max-width: 800px;
+    margin: auto;
+    label {
+      font-size: 1.2rem;
+    }
+  }
   .add-service-btn-wrapper {
     text-align: end;
   }
