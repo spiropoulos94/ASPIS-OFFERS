@@ -48,7 +48,7 @@
               v-if="
                 offers[oindex].services[sindex].required_products.length === 0
               "
-              class="service-small-heading"
+              class="service-small-heading product"
             >
               Products:
             </p>
@@ -248,12 +248,16 @@ export default {
   }
   .service-cost {
     font-weight: 800;
+    font-size: 1.8rem;
   }
   .service-small-heading {
     text-align: start;
     font-style: italic;
     padding: 0;
     margin: 0;
+    &.product {
+      margin-top: 30px;
+    }
   }
   .added-product {
     // background: red;
