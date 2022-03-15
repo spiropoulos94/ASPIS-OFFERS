@@ -45,6 +45,9 @@
             </div>
             <!-- <el-switch v-model="true"></el-switch> -->
             <p class="service-small-heading product">Products:</p>
+            <p v-if="!offers[oindex].services[sindex].required_products.length">
+              No products for this service
+            </p>
             <div class="service-products">
               <div
                 v-for="(product, pindex) in offers[oindex].services[sindex]
@@ -53,12 +56,19 @@
                 :key="product.id + pindex"
               >
                 <el-select
+                  size="small"
                   v-model="
                     offers[oindex].services[sindex].required_products[pindex]
                   "
                 >
                   <el-option>1</el-option>
                 </el-select>
+                <span class="multiply-divider">x</span>
+                <el-input-number
+                  :min="1"
+                  size="mini"
+                  v-model="num4"
+                ></el-input-number>
               </div>
               <el-button
                 @click="addProduct(oindex, sindex)"
@@ -192,6 +202,7 @@ export default {
   components: {},
   data() {
     return {
+      num4: 5,
       available_clients,
       available_services,
       available_products,
@@ -273,6 +284,9 @@ export default {
     text-align: start;
     button {
       margin-left: 15px;
+    }
+    .multiply-divider {
+      margin: 0 20px;
     }
   }
   .service-products {
