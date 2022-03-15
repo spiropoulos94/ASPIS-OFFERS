@@ -44,18 +44,8 @@
               </div>
             </div>
             <!-- <el-switch v-model="true"></el-switch> -->
-            <p
-              v-if="
-                offers[oindex].services[sindex].required_products.length === 0
-              "
-              class="service-small-heading product"
-            >
-              Products:
-            </p>
+            <p class="service-small-heading product">Products:</p>
             <div class="service-products">
-              <!-- v-for="(product, pindex) in offers[oindex].services[sindex]
-                  .required_products"
-                :key="product.name + pindex" -->
               <div
                 v-for="(product, pindex) in offers[oindex].services[sindex]
                   .required_products"
@@ -105,7 +95,7 @@
       >
     </el-row>
     <small>
-      <pre>{{ offers }}</pre>
+      <pre style="text-align: start">{{ offers }}</pre>
     </small>
   </div>
 </template>
