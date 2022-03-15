@@ -60,14 +60,15 @@
                   v-model="
                     offers[oindex].services[sindex].required_products[pindex]
                   "
+                  value-key="id"
                 >
                   <el-option
-                    v-for="(productOption, pOptionIndex) in available_products"
+                    v-for="productOption in available_products"
                     :label="productOption.name"
                     :value="productOption"
-                    :key="productOption.id + pOptionIndex"
-                    :value-key="productOption.id + pOptionIndex"
-                  ></el-option>
+                    :key="productOption.id"
+                    >{{ productOption.name }}</el-option
+                  >
                 </el-select>
                 <span class="multiply-divider">x</span>
                 <el-input-number
