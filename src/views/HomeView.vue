@@ -15,7 +15,7 @@
               v-for="client in available_clients"
               :label="client.name"
               :value="client"
-              :key="client.id"
+              :key="'client ' + client.id"
             ></el-option>
           </el-select>
         </el-form-item>
@@ -23,7 +23,7 @@
           <div
             class="service"
             v-for="(service, sindex) in offers[oindex].services"
-            :key="service.name"
+            :key="'service_' + service.name"
           >
             <p class="service-small-heading">Service #{{ sindex + 1 }}</p>
             <div class="service-option">
@@ -35,7 +35,7 @@
                   v-for="serviceOption in available_services"
                   :label="serviceOption.name"
                   :value="serviceOption"
-                  :key="serviceOption.id"
+                  :key="'service_option_' + serviceOption.id"
                   >{{ serviceOption.name }}</el-option
                 >
               </el-select>
@@ -53,7 +53,7 @@
                 v-for="(product, pindex) in offers[oindex].services[sindex]
                   .required_products"
                 class="added-product"
-                :key="product.id + pindex"
+                :key="'product_' + product.id + pindex"
               >
                 <el-select
                   size="small"
@@ -66,7 +66,7 @@
                     v-for="productOption in available_products"
                     :label="productOption.name"
                     :value="productOption"
-                    :key="productOption.id"
+                    :key="'product_option' + productOption.id"
                     >{{ productOption.name }}</el-option
                   >
                 </el-select>
@@ -79,6 +79,15 @@
                       .qty
                   "
                 ></el-input-number>
+                <span class="added-product-price"
+                  >{{
+                    offers[oindex].services[sindex].required_products[pindex]
+                      .cost *
+                    offers[oindex].services[sindex].required_products[pindex]
+                      .qty
+                  }}
+                  €</span
+                >
               </div>
               <el-button
                 @click="addProduct(oindex, sindex)"
@@ -301,6 +310,10 @@ export default {
     }
     .multiply-divider {
       margin: 0 20px;
+    }
+    .added-product-price {
+      font-size: 1.4rem;
+      float: right;
     }
   }
   .service-products {
