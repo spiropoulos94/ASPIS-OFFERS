@@ -53,7 +53,7 @@
                 v-for="(product, pindex) in offers[oindex].services[sindex]
                   .required_products"
                 class="added-product"
-                :key="'product_' + product.id + pindex"
+                :key="'p_' + oindex + sindex + pindex"
               >
                 <el-select
                   size="small"
