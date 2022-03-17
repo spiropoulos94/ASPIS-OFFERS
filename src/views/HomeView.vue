@@ -204,12 +204,6 @@ let offersDummyData = [
         cost: 30,
         required_products: [],
       },
-      {
-        id: 3,
-        name: "Ypokapnismos",
-        cost: 45,
-        required_products: [],
-      },
     ],
   },
 ];
