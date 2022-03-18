@@ -6,7 +6,7 @@
       <div
         class="offer"
         v-for="(offer, oindex) in offers"
-        :key="offer.name + oindex"
+        :key="'offer_' + offer.name + oindex"
       >
         <el-form-item class="client" label="Client">
           <el-select
