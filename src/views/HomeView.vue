@@ -3,7 +3,11 @@
     <h1>ASPIS Offers</h1>
     <h3 v-if="!offers.length">You have no offers at the moment...</h3>
     <el-form label-position="top">
-      <div class="offer" v-for="(offer, oindex) in offers" :key="offer.name">
+      <div
+        class="offer"
+        v-for="(offer, oindex) in offers"
+        :key="offer.name + oindex"
+      >
         <el-form-item class="client" label="Client">
           <el-select
             v-model="offers[oindex].client"
@@ -23,7 +27,7 @@
           <div
             class="service"
             v-for="(service, sindex) in offers[oindex].services"
-            :key="'service_' + service.name"
+            :key="'service_' + oindex + sindex"
           >
             <p class="service-small-heading">Service #{{ sindex + 1 }}</p>
             <div class="service-option">
@@ -61,14 +65,15 @@
                     offers[oindex].services[sindex].required_products[pindex]
                   "
                   value-key="id"
+                  placeholder="Select product"
                 >
+                  <!-- <el-option>{{ `${oindex}${sindex}${pindex}` }}</el-option> -->
                   <el-option
                     v-for="productOption in available_products"
                     :label="productOption.name"
                     :value="productOption"
                     :key="'product_option' + productOption.id"
-                    >{{ productOption.name }}</el-option
-                  >
+                  ></el-option>
                 </el-select>
                 <span class="multiply-divider">x</span>
                 <el-input-number
@@ -106,9 +111,10 @@
           <div class="add-service-btn-wrapper">
             <el-button
               @click="addService(oindex)"
-              type="primary"
+              type="warning"
               icon="el-icon-plus"
               size="small"
+              plain
               :disabled="
                 offers[oindex].services.length === available_services.length
               "
@@ -234,21 +240,19 @@ export default {
       console.log("Offer added!");
       this.offers.push({
         client: {},
-        services: [available_services[0]],
+        services: [{ ...available_services[0] }],
       });
     },
     addService(offerIndex) {
       console.log("Service added", offerIndex);
-      this.offers[offerIndex].services.push(available_services[0]);
+      this.offers[offerIndex].services.push({ ...available_services[0] });
     },
     addProduct(offerIndex, serviceIndex) {
       console.log(this.offers, { offerIndex, serviceIndex });
-      // let productIds = this.offers[offerIndex].services[
-      //   serviceIndex
-      // ].required_products.map((p) => p.id);
-      this.offers[offerIndex].services[serviceIndex].required_products.push(
-        available_products[0]
-      );
+
+      this.offers[offerIndex].services[serviceIndex].required_products.push({
+        ...available_products[0],
+      });
     },
   },
 };
