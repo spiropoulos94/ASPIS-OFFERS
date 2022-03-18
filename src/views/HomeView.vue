@@ -245,13 +245,24 @@ export default {
     },
     addService(offerIndex) {
       console.log("Service added", offerIndex);
-      this.offers[offerIndex].services.push({ ...available_services[0] });
+
+      let existingServicesIds = this.offers[offerIndex].services.map(
+        (s) => s.id
+      );
+
+      this.offers[offerIndex].services.push({
+        ...available_services.find((s) => !existingServicesIds.includes(s.id)),
+      });
     },
     addProduct(offerIndex, serviceIndex) {
       console.log(this.offers, { offerIndex, serviceIndex });
 
+      let existingProdductsIds = this.offers[offerIndex].services[
+        serviceIndex
+      ].required_products.map((p) => p.id);
+
       this.offers[offerIndex].services[serviceIndex].required_products.push({
-        ...available_products[0],
+        ...available_products.find((p) => !existingProdductsIds.includes(p.id)),
       });
     },
   },
