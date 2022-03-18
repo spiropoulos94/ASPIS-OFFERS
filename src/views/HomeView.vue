@@ -8,7 +8,7 @@
         v-for="(offer, oindex) in offers"
         :key="'offer_' + offer.name + oindex"
       >
-        <el-form-item class="client" label="Client">
+        <el-form-item class="client" :label="0 ? Client : ''">
           <el-select
             v-model="offers[oindex].client"
             style="width: 450px"
@@ -199,28 +199,28 @@ let available_products = [
 ];
 
 let offersDummyData = [
-  {
-    client: {
-      id: 2,
-      name: "The Artemis Palace",
-      email: "artemis@beach.gr",
-      img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    },
-    services: [
-      {
-        id: 1,
-        name: "Apentomwsh",
-        cost: 15,
-        required_products: [],
-      },
-      {
-        id: 2,
-        name: "Apolymansh",
-        cost: 30,
-        required_products: [],
-      },
-    ],
-  },
+  // {
+  //   client: {
+  //     id: 2,
+  //     name: "The Artemis Palace",
+  //     email: "artemis@beach.gr",
+  //     img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  //   },
+  //   services: [
+  //     {
+  //       id: 1,
+  //       name: "Apentomwsh",
+  //       cost: 15,
+  //       required_products: [],
+  //     },
+  //     {
+  //       id: 2,
+  //       name: "Apolymansh",
+  //       cost: 30,
+  //       required_products: [],
+  //     },
+  //   ],
+  // },
 ];
 
 export default {
@@ -237,9 +237,12 @@ export default {
   },
   methods: {
     addOffer() {
-      console.log("Offer added!");
+      let existingOffersClientIds = this.offers.map((offer) => offer.client.id);
+
+      console.log("Offer added!", existingOffersClientIds);
+
       this.offers.push({
-        client: {},
+        client: { ...available_clients[0] },
         services: [{ ...available_services[0] }],
       });
     },
@@ -271,11 +274,18 @@ export default {
 
 <style lang="scss">
 .offer {
-  border: 1px solid blue;
+  border: 10px solid lightblue;
   padding: 10px;
   border-radius: 15px;
   margin: 20px auto;
   max-width: 1200px;
+
+  .client {
+    .el-form-item__label {
+      float: left;
+    }
+  }
+
   .client {
     label {
       font-size: 1.75rem;
