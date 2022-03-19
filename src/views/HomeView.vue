@@ -132,6 +132,7 @@
         icon="el-icon-plus"
         plain
         type="primary"
+        :disabled="offers.length === available_clients.length"
         @click="addOffer"
         >Add offer</el-button
       >
@@ -242,7 +243,11 @@ export default {
       console.log("Offer added!", existingOffersClientIds);
 
       this.offers.push({
-        client: { ...available_clients[0] },
+        client: {
+          ...this.available_clients.find(
+            (c) => !existingOffersClientIds.includes(c.id)
+          ),
+        },
         services: [{ ...available_services[0] }],
       });
     },
