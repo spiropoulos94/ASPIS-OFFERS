@@ -1,6 +1,8 @@
 <template>
   <div class="home">
-    <h1>ASPIS Offers</h1>
+    <div class="navbar">
+      <span>ASPIS Offers</span>
+    </div>
     <h3 v-if="!offers.length">You have no offers at the moment...</h3>
     <el-form label-position="top">
       <div
@@ -337,6 +339,27 @@ export default {
 </script>
 
 <style lang="scss">
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.navbar {
+  height: 3rem;
+  text-align: start;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: gray;
+  z-index: 9999;
+  span {
+    font-size: 1.3rem;
+  }
+}
 .offer {
   border: 10px solid lightblue;
   padding: 10px;
