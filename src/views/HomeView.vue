@@ -43,6 +43,11 @@
                   :label="serviceOption.name"
                   :value="serviceOption"
                   :key="'service_option_' + serviceOption.id"
+                  :disabled="
+                    offers[oindex].services
+                      .map((s) => s.id)
+                      .includes(serviceOption.id)
+                  "
                   >{{ serviceOption.name }}</el-option
                 >
               </el-select>
@@ -76,6 +81,11 @@
                     :label="productOption.name"
                     :value="productOption"
                     :key="'product_option' + productOption.id"
+                    :disabled="
+                      offers[oindex].services[sindex].required_products
+                        .map((p) => p.id)
+                        .includes(productOption.id)
+                    "
                   ></el-option>
                 </el-select>
                 <span class="multiply-divider">x</span>
