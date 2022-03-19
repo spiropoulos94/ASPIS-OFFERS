@@ -20,6 +20,9 @@
               :label="client.name"
               :value="client"
               :key="'client ' + client.id"
+              :disabled="
+                offers.map((offer) => offer.client.id).includes(client.id)
+              "
             ></el-option>
           </el-select>
         </el-form-item>
