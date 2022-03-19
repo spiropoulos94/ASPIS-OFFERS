@@ -271,18 +271,21 @@ let offersDummyData = [
         cost: 15,
         required_products: [],
       },
+    ],
+  },
+  {
+    client: {
+      id: 2,
+      name: "The Artemis Palace",
+      email: "artemis@beach.gr",
+      img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    services: [
       {
-        id: 2,
-        name: "Apolymansh",
-        cost: 30,
-        required_products: [
-          {
-            id: 1,
-            name: "Total block",
-            cost: 15,
-            qty: 1,
-          },
-        ],
+        id: 1,
+        name: "Apentomwsh",
+        cost: 15,
+        required_products: [],
       },
     ],
   },
@@ -320,14 +323,17 @@ export default {
 
       console.log("Offer added!", existingOffersClientIds);
 
-      this.offers.push({
+      let newOffer = {
         client: {
           ...this.available_clients.find(
             (c) => !existingOffersClientIds.includes(c.id)
           ),
         },
-        services: [{ ...available_services[0] }],
-      });
+        services: [],
+        date: new Date(),
+      };
+
+      this.offers.push({ ...newOffer });
     },
     addService(offerIndex) {
       console.log("Service added", offerIndex);
