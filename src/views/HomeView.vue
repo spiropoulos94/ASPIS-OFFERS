@@ -345,7 +345,10 @@ export default {
 
 <style lang="scss">
 $logo-orange: #e54c00;
+$logo-orange-light: #df7a47;
+
 $logo-green: #237c36;
+$logo-green-light: #5a8864;
 
 * {
   box-sizing: border-box;
