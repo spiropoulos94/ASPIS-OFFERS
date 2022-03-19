@@ -105,7 +105,7 @@
                   <!-- <el-option>{{ `${oindex}${sindex}${pindex}` }}</el-option> -->
                   <el-option
                     v-for="productOption in available_products"
-                    :label="productOption.name"
+                    :label="`${productOption.name} (${productOption.cost} €)`"
                     :value="productOption"
                     :key="'product_option' + productOption.id"
                     :disabled="
@@ -159,6 +159,10 @@
                 "
                 >Product</el-button
               >
+            </div>
+            <el-divider content-position="left">Service Total:</el-divider>
+            <div class="service-total">
+              <span>{{ totalServiceCost(oindex, sindex) }} €</span>
             </div>
           </div>
           <div class="add-service-btn-wrapper">
@@ -303,6 +307,14 @@ export default {
     // disableDelete() {
     //   console.log("Delete Disabled");
     // },
+    totalServiceCost(oindex, sindex) {
+      let serviceCost = this.offers[oindex].services[sindex].cost;
+      let productsCost = this.offers[oindex].services[sindex].required_products
+        .map((p) => p.qty * p.cost)
+        .reduce((prev, curr) => prev + curr, 0);
+
+      return serviceCost + productsCost;
+    },
     addOffer() {
       let existingOffersClientIds = this.offers.map((offer) => offer.client.id);
 
@@ -329,8 +341,6 @@ export default {
       });
     },
     addProduct(offerIndex, serviceIndex) {
-      console.log(this.offers, { offerIndex, serviceIndex });
-
       let existingProdductsIds = this.offers[offerIndex].services[
         serviceIndex
       ].required_products.map((p) => p.id);
@@ -427,8 +437,17 @@ $logo-green-light: #5a8864;
   }
   .service-cost {
     font-weight: 800;
-    font-size: 1.8rem;
+    font-size: 1.1rem;
   }
+
+  .service-total {
+    span {
+      font-size: 1.5rem;
+    }
+    // background: red;
+    // text-align: end;
+  }
+
   .service-small-heading {
     text-align: start;
     font-style: italic;
@@ -449,7 +468,10 @@ $logo-green-light: #5a8864;
       margin: 0 20px;
     }
     .added-product-price {
-      font-size: 1.4rem;
+      &:before {
+        content: "+ ";
+      }
+      font-size: 1.1rem;
       float: right;
     }
   }
