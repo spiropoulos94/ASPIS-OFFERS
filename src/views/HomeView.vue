@@ -80,7 +80,9 @@
               <div class="service-cost">
                 <!-- {{ offers[oindex].services[sindex].cost }}  -->
                 <el-input-number
-                  controls-position="left"
+                  size="mini"
+                  controls-position="right"
+                  :controls="false"
                   v-model="offers[oindex].services[sindex].cost"
                 ></el-input-number>
                 €
