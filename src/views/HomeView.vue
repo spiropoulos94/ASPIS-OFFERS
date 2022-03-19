@@ -1,7 +1,12 @@
 <template>
   <div class="home">
     <div class="navbar">
-      <span>ASPIS Offers</span>
+      <span class="logo">ASPIS Offers</span>
+      <!-- <div class="delete-mode">
+        <i class="el-icon-delete"></i>
+        <span>Delete Mode:</span>
+        <el-switch active-color="#F56C6C" v-model="deleteMode"> </el-switch>
+      </div> -->
     </div>
     <h3 v-if="!offers.length">You have no offers at the moment...</h3>
     <el-form label-position="top">
@@ -284,7 +289,7 @@ export default {
   components: {},
   data() {
     return {
-      num4: 5,
+      deleteMode: false,
       available_clients,
       available_services,
       available_products,
@@ -292,7 +297,7 @@ export default {
     };
   },
   methods: {
-    // enableDelete() {
+    // deleteMode() {
     //   console.log("Delete Enabled");
     // },
     // disableDelete() {
@@ -354,10 +359,17 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  background: gray;
+  background: white;
+  border-bottom: 3px solid lightblue;
   z-index: 9999;
-  span {
+  justify-content: space-between;
+  .logo {
     font-size: 1.3rem;
+  }
+  .delete-mode {
+    * {
+      margin-left: 5px;
+    }
   }
 }
 .offer {
