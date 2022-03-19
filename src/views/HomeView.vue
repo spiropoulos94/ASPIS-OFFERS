@@ -55,10 +55,11 @@
                 {{ offers[oindex].services[sindex].cost }} €
               </div>
             </div>
-            <!-- <el-switch v-model="true"></el-switch> -->
-            <p class="service-small-heading product">Products:</p>
-            <p v-if="!offers[oindex].services[sindex].required_products.length">
-              No products for this service
+            <p
+              v-if="offers[oindex].services[sindex].required_products.length"
+              class="service-small-heading product"
+            >
+              Products:
             </p>
             <div class="service-products">
               <div
@@ -213,28 +214,35 @@ let available_products = [
 ];
 
 let offersDummyData = [
-  // {
-  //   client: {
-  //     id: 2,
-  //     name: "The Artemis Palace",
-  //     email: "artemis@beach.gr",
-  //     img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-  //   },
-  //   services: [
-  //     {
-  //       id: 1,
-  //       name: "Apentomwsh",
-  //       cost: 15,
-  //       required_products: [],
-  //     },
-  //     {
-  //       id: 2,
-  //       name: "Apolymansh",
-  //       cost: 30,
-  //       required_products: [],
-  //     },
-  //   ],
-  // },
+  {
+    client: {
+      id: 2,
+      name: "The Artemis Palace",
+      email: "artemis@beach.gr",
+      img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    services: [
+      {
+        id: 1,
+        name: "Apentomwsh",
+        cost: 15,
+        required_products: [],
+      },
+      {
+        id: 2,
+        name: "Apolymansh",
+        cost: 30,
+        required_products: [
+          {
+            id: 1,
+            name: "Total block",
+            cost: 15,
+            qty: 1,
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export default {
@@ -341,7 +349,7 @@ export default {
     padding: 0;
     margin: 0;
     &.product {
-      margin-top: 30px;
+      margin-top: 10px;
     }
   }
   .added-product {
@@ -361,6 +369,7 @@ export default {
   }
   .service-products {
     text-align: end;
+    margin-top: 1rem;
   }
 }
 </style>
