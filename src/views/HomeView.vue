@@ -48,6 +48,10 @@
             v-for="(service, sindex) in offers[oindex].services"
             :key="'service_' + oindex + sindex"
           >
+            <p class="service-small-heading">
+              Service #{{ sindex + 1 }} - {{ service.name }}
+            </p>
+
             <div class="delete-actions">
               <el-button
                 @click="offers[oindex].services.splice(sindex, 1)"
@@ -58,7 +62,6 @@
                 >Delete Service</el-button
               >
             </div>
-            <p class="service-small-heading">Service #{{ sindex + 1 }}</p>
             <div class="service-option">
               <el-select
                 value-key="id"
@@ -463,6 +466,7 @@ $logo-green-light: #5a8864;
     font-style: italic;
     padding: 0;
     margin: 0;
+    font-size: 1.4rem;
     &.product {
       margin-top: 10px;
     }
