@@ -49,7 +49,7 @@
             :key="'service_' + oindex + sindex"
           >
             <p class="service-small-heading">
-              Service #{{ sindex + 1 }} - {{ service.name }}
+              #{{ sindex + 1 }} - {{ service.name }}
             </p>
 
             <div class="delete-actions">
