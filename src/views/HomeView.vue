@@ -78,7 +78,12 @@
                 >
               </el-select>
               <div class="service-cost">
-                {{ offers[oindex].services[sindex].cost }} €
+                <!-- {{ offers[oindex].services[sindex].cost }}  -->
+                <el-input-number
+                  controls-position="left"
+                  v-model="offers[oindex].services[sindex].cost"
+                ></el-input-number>
+                €
               </div>
             </div>
             <p
