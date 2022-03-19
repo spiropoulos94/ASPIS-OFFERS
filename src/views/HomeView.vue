@@ -185,6 +185,7 @@
     </el-form>
     <el-row>
       <el-button
+        v-if="!offers.length"
         style="width: 500px"
         icon="el-icon-plus"
         plain
@@ -194,9 +195,9 @@
         >Add offer</el-button
       >
     </el-row>
-    <small>
+    <!-- <small>
       <pre style="text-align: start">{{ offers }}</pre>
-    </small>
+    </small> -->
   </div>
 </template>
 
@@ -273,22 +274,22 @@ let offersDummyData = [
       },
     ],
   },
-  {
-    client: {
-      id: 2,
-      name: "The Artemis Palace",
-      email: "artemis@beach.gr",
-      img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    },
-    services: [
-      {
-        id: 1,
-        name: "Apentomwsh",
-        cost: 15,
-        required_products: [],
-      },
-    ],
-  },
+  // {
+  //   client: {
+  //     id: 2,
+  //     name: "The Artemis Palace",
+  //     email: "artemis@beach.gr",
+  //     img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  //   },
+  //   services: [
+  //     {
+  //       id: 1,
+  //       name: "Apentomwsh",
+  //       cost: 15,
+  //       required_products: [],
+  //     },
+  //   ],
+  // },
 ];
 
 export default {
