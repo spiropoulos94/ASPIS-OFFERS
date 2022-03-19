@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="navbar">
-      <span class="logo">ASPIS Offers</span>
+      <span class="logo">ASPIS Apolymantikh Vasileiou - Offers</span>
       <!-- <div class="delete-mode">
         <i class="el-icon-delete"></i>
         <span>Delete Mode:</span>
@@ -344,6 +344,9 @@ export default {
 </script>
 
 <style lang="scss">
+$logo-orange: #e54c00;
+$logo-green: #237c36;
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -359,12 +362,14 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  background: white;
-  border-bottom: 3px solid lightblue;
+  background: $logo-orange;
+  border-bottom: 5px solid $logo-green;
   z-index: 9999;
   justify-content: space-between;
   .logo {
     font-size: 1.3rem;
+    color: white;
+    font-weight: 900;
   }
   .delete-mode {
     * {
