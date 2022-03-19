@@ -345,7 +345,7 @@ export default {
 
 <style lang="scss">
 $logo-orange: #e54c00;
-$logo-orange-light: #df7a47;
+$logo-orange-light: #e8a07c;
 
 $logo-green: #237c36;
 $logo-green-light: #5a8864;
@@ -366,7 +366,7 @@ $logo-green-light: #5a8864;
   left: 0;
   right: 0;
   background: $logo-orange;
-  border-bottom: 5px solid $logo-green;
+  // border-bottom: 5px solid $logo-green;
   z-index: 9999;
   justify-content: space-between;
   .logo {
@@ -381,7 +381,7 @@ $logo-green-light: #5a8864;
   }
 }
 .offer {
-  border: 10px solid lightblue;
+  border: 10px solid $logo-orange-light;
   padding: 10px;
   border-radius: 15px;
   margin: 20px auto;
