@@ -321,8 +321,6 @@ export default {
     addOffer() {
       let existingOffersClientIds = this.offers.map((offer) => offer.client.id);
 
-      console.log("Offer added!", existingOffersClientIds);
-
       let newOffer = {
         client: {
           ...this.available_clients.find(
@@ -335,14 +333,13 @@ export default {
       this.offers.push({ ...newOffer });
     },
     addService(offerIndex) {
-      console.log("Service added", offerIndex);
-
       let existingServicesIds = this.offers[offerIndex].services.map(
         (s) => s.id
       );
 
       this.offers[offerIndex].services.push({
         ...available_services.find((s) => !existingServicesIds.includes(s.id)),
+        // timestamp: +new Date(),
       });
     },
     addProduct(offerIndex, serviceIndex) {
