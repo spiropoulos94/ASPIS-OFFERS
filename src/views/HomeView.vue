@@ -330,7 +330,6 @@ export default {
           ),
         },
         services: [],
-        date: new Date(),
       };
 
       this.offers.push({ ...newOffer });
