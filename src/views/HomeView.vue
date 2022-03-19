@@ -8,6 +8,15 @@
         v-for="(offer, oindex) in offers"
         :key="'offer_' + offer.name + oindex"
       >
+        <div class="delete-actions">
+          <el-button
+            @click="offers.splice(oindex, 1)"
+            plain
+            type="danger"
+            icon="el-icon-delete"
+            >Delete Offer</el-button
+          >
+        </div>
         <el-form-item class="client" :label="0 ? Client : ''">
           <el-select
             v-model="offers[oindex].client"
@@ -32,6 +41,16 @@
             v-for="(service, sindex) in offers[oindex].services"
             :key="'service_' + oindex + sindex"
           >
+            <div class="delete-actions">
+              <el-button
+                @click="offers[oindex].services.splice(sindex, 1)"
+                plain
+                type="danger"
+                icon="el-icon-delete"
+                size="small"
+                >Delete Service</el-button
+              >
+            </div>
             <p class="service-small-heading">Service #{{ sindex + 1 }}</p>
             <div class="service-option">
               <el-select
@@ -98,6 +117,19 @@
                       .qty
                   "
                 ></el-input-number>
+                <el-button
+                  @click="
+                    offers[oindex].services[sindex].required_products.splice(
+                      pindex,
+                      1
+                    )
+                  "
+                  round
+                  plain
+                  type="danger"
+                  icon="el-icon-delete"
+                  size="small"
+                ></el-button>
                 <span class="added-product-price"
                   >{{
                     offers[oindex].services[sindex].required_products[pindex]
@@ -258,6 +290,12 @@ export default {
     };
   },
   methods: {
+    // enableDelete() {
+    //   console.log("Delete Enabled");
+    // },
+    // disableDelete() {
+    //   console.log("Delete Disabled");
+    // },
     addOffer() {
       let existingOffersClientIds = this.offers.map((offer) => offer.client.id);
 
@@ -305,6 +343,11 @@ export default {
   border-radius: 15px;
   margin: 20px auto;
   max-width: 1200px;
+
+  .delete-actions {
+    text-align: end;
+    margin: 5px 0;
+  }
 
   .client {
     .el-form-item__label {
