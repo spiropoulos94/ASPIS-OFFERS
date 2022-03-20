@@ -191,8 +191,8 @@
           </div>
         </el-form-item>
         <!-- <el-form-item label="Discount"> </el-form-item> -->
-        <el-divider>Total Cost</el-divider>
-        {{ totalOfferCost(oindex) }}
+        <el-divider>Total Offer Cost</el-divider>
+        {{ totalOfferCost(oindex) }} €
       </div>
     </el-form>
     <el-row>
