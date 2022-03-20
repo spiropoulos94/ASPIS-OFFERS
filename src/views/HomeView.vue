@@ -269,22 +269,22 @@ let available_products = [
 ];
 
 let offersDummyData = [
-  {
-    client: {
-      id: 2,
-      name: "The Artemis Palace",
-      email: "artemis@beach.gr",
-      img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    },
-    services: [
-      {
-        id: 1,
-        name: "Apentomwsh",
-        cost: 15,
-        required_products: [],
-      },
-    ],
-  },
+  // {
+  //   client: {
+  //     id: 2,
+  //     name: "The Artemis Palace",
+  //     email: "artemis@beach.gr",
+  //     img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  //   },
+  //   services: [
+  //     {
+  //       id: 1,
+  //       name: "Apentomwsh",
+  //       cost: 15,
+  //       required_products: [],
+  //     },
+  //   ],
+  // },
   // {
   //   client: {
   //     id: 2,
@@ -380,7 +380,7 @@ $logo-green-light: #5a8864;
 }
 
 .navbar {
-  height: 3rem;
+  height: 3em;
   text-align: start;
   padding: 0 20px;
   display: flex;
@@ -394,7 +394,7 @@ $logo-green-light: #5a8864;
   z-index: 9999;
   justify-content: space-between;
   .logo {
-    font-size: 1.3rem;
+    font-size: 1.3em;
     color: white;
     font-weight: 900;
   }
@@ -424,14 +424,14 @@ $logo-green-light: #5a8864;
 
   .client {
     label {
-      font-size: 1.75rem;
+      font-size: 1.75em;
     }
   }
   .services-form-item {
     max-width: 800px;
     margin: auto;
     label {
-      font-size: 1.2rem;
+      font-size: 1.2em;
     }
   }
   .add-service-btn-wrapper {
@@ -451,7 +451,7 @@ $logo-green-light: #5a8864;
   }
   .service-cost {
     font-weight: 800;
-    font-size: 1.1rem;
+    font-size: 1.1em;
     .el-input-number--mini {
       width: 50px;
     }
@@ -459,7 +459,7 @@ $logo-green-light: #5a8864;
 
   .service-total {
     span {
-      font-size: 1.5rem;
+      font-size: 1.5em;
     }
     // background: red;
     // text-align: end;
@@ -467,14 +467,14 @@ $logo-green-light: #5a8864;
 
   .service-small-heading {
     text-align: start;
-    font-style: italic;
+    // font-style: italic;
     padding: 0;
     margin: 0;
-    font-size: 1.4rem;
+    font-size: 1.4em;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5em;
     &.product {
       margin-top: 10px;
     }
@@ -493,13 +493,13 @@ $logo-green-light: #5a8864;
       &:before {
         content: "+ ";
       }
-      font-size: 1.1rem;
+      font-size: 1.1em;
       float: right;
     }
   }
   .service-products {
     text-align: end;
-    margin-top: 1rem;
+    margin-top: 1em;
   }
 }
 </style>
