@@ -43,7 +43,7 @@
           </el-select>
         </el-form-item>
         <el-form-item class="services-form-item" label="SERVICES">
-          <div
+          <el-card
             class="service"
             v-for="(service, sindex) in offers[oindex].services"
             :key="'service_' + oindex + sindex"
@@ -175,7 +175,7 @@
             <div class="service-total">
               <span>{{ totalServiceCost(oindex, sindex) }} €</span>
             </div>
-          </div>
+          </el-card>
           <div class="add-service-btn-wrapper">
             <el-button
               @click="addService(oindex)"
@@ -446,6 +446,12 @@ $logo-green-light: #5a8864;
   .client {
     .el-form-item__label {
       float: left;
+    }
+    input {
+      border: none;
+      font-size: 1.85em;
+      border-bottom: 1px solid black;
+      border-radius: 0;
     }
   }
 
