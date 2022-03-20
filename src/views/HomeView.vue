@@ -208,7 +208,7 @@
       <el-button
         v-if="offers.length && offers[0].services.length"
         style="width: 500px"
-        icon="el-icon-s-promotion"
+        icon="el-icon-edit-outline"
         plain
         type="success"
         :disabled="offers.length === available_clients.length"
