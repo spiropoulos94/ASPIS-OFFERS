@@ -351,7 +351,11 @@ export default {
       return serviceCost + productsCost;
     },
     totalOfferCost(offerIndex) {
-      console.log("calculating total offer cost for offer ", offerIndex);
+      let totalCost = 0;
+      this.offers[offerIndex].services.forEach(
+        (s, sindex) => (totalCost += this.totalServiceCost(offerIndex, sindex))
+      );
+      return totalCost;
     },
     addOffer() {
       let existingOffersClientIds = this.offers.map((offer) => offer.client.id);
