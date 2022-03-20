@@ -432,7 +432,7 @@ $logo-green-light: #5a8864;
   }
 }
 .offer {
-  border: 10px solid $logo-orange-light;
+  // border: 10px solid $logo-orange-light;
   padding: 10px;
   border-radius: 15px;
   margin: 20px auto;
