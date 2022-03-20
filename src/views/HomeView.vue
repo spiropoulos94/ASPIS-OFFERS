@@ -48,20 +48,20 @@
             v-for="(service, sindex) in offers[oindex].services"
             :key="'service_' + oindex + sindex"
           >
-            <p class="service-small-heading">
-              #{{ sindex + 1 }} - {{ service.name }}
-            </p>
-
-            <div class="delete-actions">
-              <el-button
-                @click="offers[oindex].services.splice(sindex, 1)"
-                plain
-                type="danger"
-                icon="el-icon-delete"
-                size="small"
-                >Delete Service</el-button
-              >
+            <div class="service-small-heading">
+              <span>#{{ sindex + 1 }} - {{ service.name }}</span>
+              <div class="delete-actions">
+                <el-button
+                  @click="offers[oindex].services.splice(sindex, 1)"
+                  plain
+                  type="danger"
+                  icon="el-icon-delete"
+                  size="small"
+                  >Delete Service</el-button
+                >
+              </div>
             </div>
+
             <div class="service-option">
               <el-select
                 value-key="id"
@@ -82,13 +82,14 @@
               </el-select>
               <div class="service-cost">
                 <!-- {{ offers[oindex].services[sindex].cost }}  -->
+                Price :
                 <el-input-number
                   size="mini"
                   controls-position="right"
                   :controls="false"
                   v-model="offers[oindex].services[sindex].cost"
                 ></el-input-number>
-                €
+                <!-- € -->
               </div>
             </div>
             <p
@@ -451,6 +452,9 @@ $logo-green-light: #5a8864;
   .service-cost {
     font-weight: 800;
     font-size: 1.1rem;
+    .el-input-number--mini {
+      width: 50px;
+    }
   }
 
   .service-total {
@@ -467,6 +471,10 @@ $logo-green-light: #5a8864;
     padding: 0;
     margin: 0;
     font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
     &.product {
       margin-top: 10px;
     }
