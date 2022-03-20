@@ -191,7 +191,8 @@
           </div>
         </el-form-item>
         <!-- <el-form-item label="Discount"> </el-form-item> -->
-        <!-- <el-divider></el-divider> -->
+        <el-divider>Total Cost</el-divider>
+        {{ totalOfferCost(oindex) }}
       </div>
     </el-form>
     <el-row>
@@ -349,6 +350,9 @@ export default {
 
       return serviceCost + productsCost;
     },
+    totalOfferCost(offerIndex) {
+      console.log("calculating total offer cost for offer ", offerIndex);
+    },
     addOffer() {
       let existingOffersClientIds = this.offers.map((offer) => offer.client.id);
 
@@ -478,10 +482,9 @@ $logo-green-light: #5a8864;
 
   .service-total {
     span {
-      font-size: 1.5em;
+      font-size: 1.4em;
     }
-    // background: red;
-    // text-align: end;
+    text-align: end;
   }
 
   .service-small-heading {
