@@ -205,10 +205,19 @@
         @click="addOffer"
         >Add offer</el-button
       >
+      <el-button
+        v-if="offers.length && offers[0].services.length"
+        style="width: 500px"
+        icon="el-icon-s-promotion"
+        plain
+        type="success"
+        :disabled="offers.length === available_clients.length"
+        >Generate Email</el-button
+      >
     </el-row>
-    <!-- <small>
+    <small>
       <pre style="text-align: start">{{ offers }}</pre>
-    </small> -->
+    </small>
   </div>
 </template>
 
