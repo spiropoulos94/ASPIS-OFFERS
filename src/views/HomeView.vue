@@ -269,38 +269,48 @@ let available_products = [
 ];
 
 let offersDummyData = [
-  // {
-  //   client: {
-  //     id: 2,
-  //     name: "The Artemis Palace",
-  //     email: "artemis@beach.gr",
-  //     img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-  //   },
-  //   services: [
-  //     {
-  //       id: 1,
-  //       name: "Apentomwsh",
-  //       cost: 15,
-  //       required_products: [],
-  //     },
-  //   ],
-  // },
-  // {
-  //   client: {
-  //     id: 2,
-  //     name: "The Artemis Palace",
-  //     email: "artemis@beach.gr",
-  //     img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-  //   },
-  //   services: [
-  //     {
-  //       id: 1,
-  //       name: "Apentomwsh",
-  //       cost: 15,
-  //       required_products: [],
-  //     },
-  //   ],
-  // },
+  {
+    client: {
+      id: 2,
+      name: "The Artemis Palace",
+      email: "artemis@beach.gr",
+      img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    },
+    services: [
+      {
+        id: 1,
+        name: "Apentomwsh",
+        cost: 30,
+        required_products: [
+          {
+            id: 1,
+            name: "Total block",
+            cost: 15,
+            qty: 2,
+          },
+          {
+            id: 2,
+            name: "Tunel",
+            cost: 30,
+            qty: 1,
+          },
+        ],
+      },
+      {
+        id: 2,
+        name: "Apolymansh",
+        cost: 30,
+        required_products: [
+          {
+            id: 3,
+            name: "UV GT200",
+            cost: 90,
+            qty: 1,
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export default {
