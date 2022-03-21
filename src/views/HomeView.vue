@@ -224,6 +224,7 @@
 
 <script>
 // @ is an alias to /src
+import { cloneDeep } from "lodash";
 
 let available_clients = [
   {
@@ -369,26 +370,30 @@ export default {
         services: [],
       };
 
-      this.offers.push({ ...newOffer });
+      this.offers.push(cloneDeep(newOffer));
     },
     addService(offerIndex) {
       let existingServicesIds = this.offers[offerIndex].services.map(
         (s) => s.id
       );
 
-      this.offers[offerIndex].services.push({
-        ...available_services.find((s) => !existingServicesIds.includes(s.id)),
+      this.offers[offerIndex].services.push(
+        cloneDeep(
+          available_services.find((s) => !existingServicesIds.includes(s.id))
+        )
         // timestamp: +new Date(),
-      });
+      );
     },
     addProduct(offerIndex, serviceIndex) {
       let existingProdductsIds = this.offers[offerIndex].services[
         serviceIndex
       ].required_products.map((p) => p.id);
 
-      this.offers[offerIndex].services[serviceIndex].required_products.push({
-        ...available_products.find((p) => !existingProdductsIds.includes(p.id)),
-      });
+      this.offers[offerIndex].services[serviceIndex].required_products.push(
+        cloneDeep(
+          available_products.find((p) => !existingProdductsIds.includes(p.id))
+        )
+      );
     },
   },
 };
