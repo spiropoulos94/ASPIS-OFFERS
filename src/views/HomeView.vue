@@ -228,19 +228,19 @@ import { cloneDeep } from "lodash";
 
 let available_clients = [
   {
-    id: 1,
+    id: 11,
     name: "Kernos Beach",
     email: "kernos@beach.gr",
     img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
   },
   {
-    id: 2,
+    id: 12,
     name: "The Artemis Palace",
     email: "artemis@beach.gr",
     img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
   },
   {
-    id: 3,
+    id: 13,
     name: "Knossos Royal",
     email: "mail@test.gr",
     img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
@@ -249,30 +249,30 @@ let available_clients = [
 
 let available_services = [
   {
-    id: 1,
+    id: 21,
     name: "Apentomwsh",
     cost: 15,
     required_products: [],
   },
-  { id: 2, name: "Apolymansh", cost: 30, required_products: [] },
-  { id: 3, name: "Ypokapnismos", cost: 45, required_products: [] },
+  { id: 22, name: "Apolymansh", cost: 30, required_products: [] },
+  { id: 23, name: "Ypokapnismos", cost: 45, required_products: [] },
 ];
 
 let available_products = [
   {
-    id: 1,
+    id: 31,
     name: "Total block",
     cost: 15,
     qty: 1,
   },
   {
-    id: 2,
+    id: 32,
     name: "Tunel",
     cost: 30,
     qty: 1,
   },
   {
-    id: 3,
+    id: 33,
     name: "UV GT200",
     cost: 90,
     qty: 1,
@@ -280,48 +280,15 @@ let available_products = [
 ];
 
 let offersDummyData = [
-  {
-    client: {
-      id: 2,
-      name: "The Artemis Palace",
-      email: "artemis@beach.gr",
-      img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    },
-    services: [
-      {
-        id: 1,
-        name: "Apentomwsh",
-        cost: 30,
-        required_products: [
-          {
-            id: 1,
-            name: "Total block",
-            cost: 15,
-            qty: 2,
-          },
-          {
-            id: 2,
-            name: "Tunel",
-            cost: 30,
-            qty: 1,
-          },
-        ],
-      },
-      {
-        id: 2,
-        name: "Apolymansh",
-        cost: 30,
-        required_products: [
-          {
-            id: 3,
-            name: "UV GT200",
-            cost: 90,
-            qty: 1,
-          },
-        ],
-      },
-    ],
-  },
+  // {
+  //   client: {
+  //     id: 12,
+  //     name: "The Artemis Palace",
+  //     email: "artemis@beach.gr",
+  //     img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+  //   },
+  //   services: [],
+  // },
 ];
 
 export default {
