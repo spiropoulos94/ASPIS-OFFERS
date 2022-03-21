@@ -474,8 +474,7 @@ $logo-green-light: #5a8864;
 }
 
 .service {
-  border: 1px solid green;
-  border-radius: 15px;
+  border-radius: 10px !important;
   padding: 10px;
   margin-bottom: 10px;
   .service-option {
