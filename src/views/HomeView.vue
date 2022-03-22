@@ -219,6 +219,7 @@
         plain
         type="success"
         :disabled="offers.length === available_clients.length"
+        @click="submit"
         >Generate Email</el-button
       >
     </el-row>
@@ -355,6 +356,39 @@ export default {
     };
   },
   methods: {
+    submit() {
+      let content = this.mailContent(this.offers[0]);
+
+      console.log(content.content);
+      console.log(content);
+    },
+    mailContent(offer) {
+      let to = "To : " + offer.client.name + "\n";
+
+      let allServices = offer.services.map((s) => s.name).join("-");
+
+      let allProducts = [];
+      offer.services.map((s) =>
+        s.required_products.forEach((p) =>
+          !allProducts.map((p) => p.id).includes(p.id)
+            ? allProducts.push(p.name)
+            : ""
+        )
+      );
+
+      allProducts = allProducts.join("-");
+
+      let content =
+        "Ανταποκρινόμενοι στην πρόσκλησή σας για της εξής υπηρεσίες : \n";
+      content += allServices + "\n";
+      content += "και τα  εξής προιόντα : \n";
+      content += allProducts + "\n";
+      content += "σας υποβάλλουμε την προσφορά μας: \n";
+      content += "\n";
+      content += "σας υποβάλλουμε την προσφορά μας: \n";
+
+      return { to, content, allServices, allProducts };
+    },
     // deleteMode() {
     //   console.log("Delete Enabled");
     // },
