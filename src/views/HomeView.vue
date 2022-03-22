@@ -376,6 +376,7 @@ export default {
         )
       );
 
+      allProducts = [...new Set(allProducts)]; // remove duplicates
       allProducts = allProducts.join("-");
 
       let content =
@@ -385,7 +386,31 @@ export default {
       content += allProducts + "\n";
       content += "σας υποβάλλουμε την προσφορά μας: \n";
       content += "\n";
-      content += "σας υποβάλλουμε την προσφορά μας: \n";
+      content += `Λαμβάνοντας υπόψην τον χώρο του ${offer.client.name}, αναλυτικά προτείνουμε τις εξής υπηρεσίες. \n`;
+      content += `\n`;
+
+      offer.services.forEach((service) => {
+        content += `\n`;
+        content += `Για την υπηρεσία ${service.name} το κόστος ανέρχεται στα ${service.cost} ευρώ (χωρίς ΦΠΑ). \n`;
+        content += `\n`;
+        content += `Απαιτούμενα προιόντα : \n`;
+        content += `\n`;
+        service.required_products.forEach((product) => {
+          content += `${product.qty} ${product.name}  με κόστος ${
+            product.cost
+          } * ${product.qty} = € ${product.qty * product.cost} (χωρίς ΦΠΑ) \n`;
+        });
+      });
+
+      content += `\n`;
+      content += `To συνολικό κόστος της προσφοράς μας ανέρχεται στα ${this.totalOfferCost(
+        0
+      )} € \n`;
+
+      content += `\n`;
+      content += `Παραμένουμε στην διάθεση σας για οποιαδήποτε απορία η διευκρίνιση. \n`;
+      content += `\n`;
+      content += `Νικόλας Βασιλείου\n`;
 
       return { to, content, allServices, allProducts };
     },
