@@ -226,6 +226,29 @@
     <small>
       <pre style="text-align: start">{{ offers }}</pre>
     </small>
+    <el-dialog
+      title="Προσφορά"
+      :visible.sync="mailDialogVisible"
+      width="80%"
+      :before-close="handleClose"
+    >
+      <el-input
+        type="textarea"
+        :rows="40"
+        placeholder="Please input"
+        v-model="mailTextContent"
+      >
+      </el-input>
+
+      <span slot="footer" class="dialog-footer">
+        <el-button disabled @click="mailDialogVisible = false"
+          >Cancel</el-button
+        >
+        <el-button disabled type="primary" @click="mailDialogVisible = false"
+          >Confirm</el-button
+        >
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -353,6 +376,8 @@ export default {
       available_services,
       available_products,
       offers: offersDummyData, // bale adeio array meta
+      mailDialogVisible: false,
+      mailTextContent: "",
     };
   },
   methods: {
@@ -361,11 +386,13 @@ export default {
 
       console.log(content.content);
       console.log(content);
+      this.mailTextContent = content.content;
+      this.mailDialogVisible = true;
     },
     mailContent(offer) {
       let to = "To : " + offer.client.name + "\n";
 
-      let allServices = offer.services.map((s) => s.name).join("-");
+      let allServices = offer.services.map((s) => s.name).join(" - ");
 
       let allProducts = [];
       offer.services.map((s) =>
@@ -377,13 +404,17 @@ export default {
       );
 
       allProducts = [...new Set(allProducts)]; // remove duplicates
-      allProducts = allProducts.join("-");
+      allProducts = allProducts.join(" - ");
 
       let content =
         "Ανταποκρινόμενοι στην πρόσκλησή σας για της εξής υπηρεσίες : \n";
+      content += `\n`;
       content += allServices + "\n";
+      content += `\n`;
       content += "και τα  εξής προιόντα : \n";
+      content += `\n`;
       content += allProducts + "\n";
+      content += `\n`;
       content += "σας υποβάλλουμε την προσφορά μας: \n";
       content += "\n";
       content += `Λαμβάνοντας υπόψην τον χώρο του ${offer.client.name}, αναλυτικά προτείνουμε τις εξής υπηρεσίες. \n`;
@@ -391,7 +422,7 @@ export default {
 
       offer.services.forEach((service) => {
         content += `\n`;
-        content += `Για την υπηρεσία ${service.name} το κόστος ανέρχεται στα ${service.cost} ευρώ (χωρίς ΦΠΑ). \n`;
+        content += `• Για την υπηρεσία ${service.name} το κόστος ανέρχεται στα ${service.cost} ευρώ (χωρίς ΦΠΑ). \n`;
         content += `\n`;
         content += `Απαιτούμενα προιόντα : \n`;
         content += `\n`;
