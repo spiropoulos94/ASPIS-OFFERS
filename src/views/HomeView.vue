@@ -13,7 +13,7 @@
       <div
         class="offer"
         v-for="(offer, oindex) in offers"
-        :key="'offer_' + offer.name + oindex"
+        :key="'offer_' + oindex"
       >
         <div class="delete-actions">
           <el-button
@@ -32,10 +32,10 @@
             value-key="id"
           >
             <el-option
-              v-for="client in available_clients"
+              v-for="(client, cl_index) in available_clients"
               :label="client.name"
               :value="client"
-              :key="'client ' + client.id"
+              :key="'client ' + client.id + cl_index"
               :disabled="
                 offers.map((offer) => offer.client.id).includes(client.id)
               "
@@ -68,10 +68,14 @@
                 v-model="offers[oindex].services[sindex]"
               >
                 <el-option
-                  v-for="serviceOption in available_services"
+                  v-for="(
+                    serviceOption, serviceOptionIndex
+                  ) in available_services"
                   :label="serviceOption.name"
                   :value="serviceOption"
-                  :key="'service_option_' + serviceOption.id"
+                  :key="
+                    'service_option_' + serviceOption.id + serviceOptionIndex
+                  "
                   :disabled="
                     offers[oindex].services
                       .map((s) => s.id)
@@ -103,7 +107,7 @@
                 v-for="(product, pindex) in offers[oindex].services[sindex]
                   .required_products"
                 class="added-product"
-                :key="'p_' + oindex + sindex + pindex"
+                :key="product.id + oindex + sindex + pindex"
               >
                 <el-select
                   size="small"
@@ -115,10 +119,12 @@
                 >
                   <!-- <el-option>{{ `${oindex}${sindex}${pindex}` }}</el-option> -->
                   <el-option
-                    v-for="productOption in available_products"
+                    v-for="(
+                      productOption, productOptionindex
+                    ) in available_products"
                     :label="`${productOption.name} (${productOption.cost} €)`"
                     :value="productOption"
-                    :key="'product_option' + productOption.id"
+                    :key="productOption.id + productOptionindex"
                     :disabled="
                       offers[oindex].services[sindex].required_products
                         .map((p) => p.id)
