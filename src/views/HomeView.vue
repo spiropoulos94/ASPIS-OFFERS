@@ -232,11 +232,13 @@
       width="80%"
       :before-close="handleClose"
     >
+      <el-input disabled placeholder="Recipient" v-model="mailTextContent.to">
+      </el-input>
       <el-input
         type="textarea"
         :rows="40"
         placeholder="Please input"
-        v-model="mailTextContent"
+        v-model="mailTextContent.content"
       >
       </el-input>
 
@@ -381,7 +383,7 @@ export default {
       available_products,
       offers: offersDummyData, // bale adeio array meta
       mailDialogVisible: false,
-      mailTextContent: "",
+      mailTextContent: {},
     };
   },
   methods: {
@@ -390,7 +392,7 @@ export default {
 
       console.log(content.content);
       console.log(content);
-      this.mailTextContent = content.content;
+      this.mailTextContent = content;
       this.mailDialogVisible = true;
     },
     mailContent(offer) {
