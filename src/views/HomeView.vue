@@ -244,8 +244,12 @@
         <el-button disabled @click="mailDialogVisible = false"
           >Cancel</el-button
         >
-        <el-button disabled type="primary" @click="mailDialogVisible = false"
-          >Confirm</el-button
+        <el-button
+          icon="el-icon-s-promotion"
+          disabled
+          type="primary"
+          @click="mailDialogVisible = false"
+          >Send</el-button
         >
       </span>
     </el-dialog>
