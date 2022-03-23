@@ -240,7 +240,7 @@
       width="80%"
       :before-close="handleClose"
     >
-      <!-- <el-input disabled placeholder="Recipient" v-model="mailTextContent.to">
+      <el-input disabled placeholder="Recipient" v-model="mailTextContent.to">
       </el-input>
       <el-input
         type="textarea"
@@ -248,7 +248,7 @@
         placeholder="Please input"
         v-model="mailTextContent.content"
       >
-      </el-input> -->
+      </el-input>
 
       <span slot="footer" class="dialog-footer">
         <el-button disabled @click="mailDialogVisible = false"
