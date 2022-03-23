@@ -429,10 +429,12 @@ export default {
       content += `\n`;
       content += allServices + "\n";
       content += `\n`;
-      content += "και τα  εξής προιόντα : \n";
-      content += `\n`;
-      content += allProducts + "\n";
-      content += `\n`;
+      if (allProducts.length) {
+        content += "και τα  εξής προιόντα : \n";
+        content += `\n`;
+        content += allProducts + "\n";
+        content += `\n`;
+      }
       content += "σας υποβάλλουμε την προσφορά μας: \n";
       content += "\n";
       content += `Λαμβάνοντας υπόψην τον χώρο του ${offer.client.name}, αναλυτικά προτείνουμε τις εξής υπηρεσίες. \n`;
@@ -442,7 +444,10 @@ export default {
         content += `\n`;
         content += `• Για την υπηρεσία ${service.name} το κόστος ανέρχεται στα ${service.cost} ευρώ (χωρίς ΦΠΑ). \n`;
         content += `\n`;
-        content += `Απαιτούμενα προιόντα : \n`;
+        content +=
+          service.required_products.length > 0
+            ? `Απαιτούμενα προιόντα : \n`
+            : "";
         content += `\n`;
         service.required_products.forEach((product) => {
           content += `${product.qty} ${product.name}  με κόστος ${
