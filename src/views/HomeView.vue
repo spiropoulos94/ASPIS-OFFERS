@@ -34,7 +34,7 @@
             <el-option
               v-for="(client, cl_index) in available_clients"
               :label="client.name"
-              :value="JSON.parse(JSON.stringify(client))"
+              :value="client"
               :key="'client ' + client.id + cl_index"
               :disabled="
                 offers.map((offer) => offer.client.id).includes(client.id)
@@ -72,7 +72,7 @@
                     serviceOption, serviceOptionIndex
                   ) in available_services"
                   :label="serviceOption.name"
-                  :value="JSON.parse(JSON.stringify(serviceOption))"
+                  :value="serviceOption"
                   :key="
                     'service_option_' + serviceOption.id + serviceOptionIndex
                   "
@@ -124,7 +124,15 @@
                     ) in available_products"
                     :label="`${productOption.name} (${productOption.cost} €)`"
                     :value="productOption"
-                    :key="productOption.id + productOptionindex"
+                    :key="
+                      'p_' +
+                      productOption.id +
+                      productOptionindex +
+                      's_' +
+                      sindex +
+                      'o_' +
+                      oindex
+                    "
                     :disabled="
                       offers[oindex].services[sindex].required_products
                         .map((p) => p.id)
