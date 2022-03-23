@@ -123,7 +123,7 @@
                       productOption, productOptionindex
                     ) in available_products"
                     :label="`${productOption.name} (${productOption.cost} €)`"
-                    :value="JSON.parse(JSON.stringify(productOption))"
+                    :value="productOption"
                     :key="productOption.id + productOptionindex"
                     :disabled="
                       offers[oindex].services[sindex].required_products
