@@ -34,7 +34,7 @@
             <el-option
               v-for="(client, cl_index) in available_clients"
               :label="client.name"
-              :value="client"
+              :value="cloneObject(client)"
               :key="'client ' + client.id + cl_index"
               :disabled="
                 offers.map((offer) => offer.client.id).includes(client.id)
@@ -72,7 +72,7 @@
                     serviceOption, serviceOptionIndex
                   ) in available_services"
                   :label="serviceOption.name"
-                  :value="serviceOption"
+                  :value="cloneObject(serviceOption)"
                   :key="
                     'service_option_' + serviceOption.id + serviceOptionIndex
                   "
@@ -121,9 +121,9 @@
                   <el-option
                     v-for="(
                       productOption, productOptionindex
-                    ) in available_products"
+                    ) in available_products.map((p) => p)"
                     :label="`${productOption.name} (${productOption.cost} €)`"
-                    :value="productOption"
+                    :value="cloneObject(productOption)"
                     :key="
                       'p_' +
                       productOption.id +
@@ -231,9 +231,9 @@
         >Generate Email</el-button
       >
     </el-row>
-    <small>
+    <!-- <small>
       <pre style="text-align: start">{{ offers }}</pre>
-    </small>
+    </small> -->
     <el-dialog
       title="Προσφορά"
       :visible.sync="mailDialogVisible"
@@ -323,62 +323,62 @@ let available_products = [
   },
 ];
 
-let offersDummyData = [
-  {
-    client: {
-      id: 11,
-      name: "Kernos Beach",
-      email: "kernos@beach.gr",
-      img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    },
-    services: [
-      {
-        id: 21,
-        name: "Apentomwsh",
-        cost: 15,
-        required_products: [
-          {
-            id: 31,
-            name: "Total block",
-            cost: 15,
-            qty: 15,
-          },
-          {
-            id: 33,
-            name: "UV GT200",
-            cost: 90,
-            qty: 10,
-          },
-        ],
-      },
-      {
-        id: 22,
-        name: "Apolymansh",
-        cost: 30,
-        required_products: [
-          {
-            id: 31,
-            name: "Total block",
-            cost: 15,
-            qty: 3,
-          },
-          {
-            id: 32,
-            name: "Tunel",
-            cost: 30,
-            qty: 3,
-          },
-          {
-            id: 33,
-            name: "UV GT200",
-            cost: 90,
-            qty: 5,
-          },
-        ],
-      },
-    ],
-  },
-];
+// let offersDummyData = [
+//   {
+//     client: {
+//       id: 11,
+//       name: "Kernos Beach",
+//       email: "kernos@beach.gr",
+//       img: "https://images.pexels.com/photos/261169/pexels-photo-261169.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+//     },
+//     services: [
+//       {
+//         id: 21,
+//         name: "Apentomwsh",
+//         cost: 15,
+//         required_products: [
+//           {
+//             id: 31,
+//             name: "Total block",
+//             cost: 15,
+//             qty: 15,
+//           },
+//           {
+//             id: 33,
+//             name: "UV GT200",
+//             cost: 90,
+//             qty: 10,
+//           },
+//         ],
+//       },
+//       {
+//         id: 22,
+//         name: "Apolymansh",
+//         cost: 30,
+//         required_products: [
+//           {
+//             id: 31,
+//             name: "Total block",
+//             cost: 15,
+//             qty: 3,
+//           },
+//           {
+//             id: 32,
+//             name: "Tunel",
+//             cost: 30,
+//             qty: 3,
+//           },
+//           {
+//             id: 33,
+//             name: "UV GT200",
+//             cost: 90,
+//             qty: 5,
+//           },
+//         ],
+//       },
+//     ],
+//   },
+// ];
 
 export default {
   name: "HomeView",
@@ -389,12 +389,16 @@ export default {
       available_clients,
       available_services,
       available_products,
-      offers: offersDummyData, // bale adeio array meta
+      // offers: offersDummyData, // bale adeio array meta
+      offers: [],
       mailDialogVisible: false,
       mailTextContent: {},
     };
   },
   methods: {
+    cloneObject(obj) {
+      return cloneDeep(obj);
+    },
     submit() {
       let content = this.mailContent(this.offers[0]);
 
