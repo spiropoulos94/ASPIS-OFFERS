@@ -10,14 +10,12 @@ const persistedState = (storage) => {
   const state = storage.getItem("state");
 
   if (JSON.parse(state)) {
+    console.log("state found in storage");
     return JSON.parse(state);
   } else {
+    console.log("state is empty");
     return null;
   }
-};
-
-const updatePersistedState = (storage) => {
-  storage.setItem("state", JSON.stringify(store.state));
 };
 
 let initialState = {
@@ -27,6 +25,9 @@ let initialState = {
 let store = new Vuex.Store({
   state: persistedState(storage) || initialState,
   getters: {
+    getGlobalState(state) {
+      return state;
+    },
     isUserLoggedIn(state) {
       return state.userIsLoggedIn;
     },
@@ -34,13 +35,14 @@ let store = new Vuex.Store({
   mutations: {
     login(state) {
       state.userIsLoggedIn = true;
-      updatePersistedState(storage);
       router.push("/");
     },
     logout(state) {
       state.userIsLoggedIn = false;
-      updatePersistedState(storage);
       router.push("/login");
+    },
+    updatePersistedState(state, storage) {
+      storage.setItem("state", JSON.stringify(store.state));
     },
   },
   actions: {},

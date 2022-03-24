@@ -8,6 +8,27 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "App",
+  components: {},
+  data() {
+    return {};
+  },
+  computed: {
+    globalState() {
+      return JSON.stringify(this.$store.getters.getGlobalState);
+    },
+  },
+  watch: {
+    globalState() {
+      this.$store.commit("updatePersistedState", window.sessionStorage);
+      console.log(window.sessionStorage.getItem("state"));
+    },
+  },
+};
+</script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
