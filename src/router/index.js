@@ -4,12 +4,7 @@ import HomeView from "@/views/HomeView.vue";
 import Login from "@/views/LoginView.vue";
 import store from "@/store";
 
-console.log({ store }, "mesa sto router");
-console.log(store.state.userIsLoggedIn, "mesa sto router");
-
 Vue.use(VueRouter);
-
-// let user = false;
 
 const routes = [
   {
