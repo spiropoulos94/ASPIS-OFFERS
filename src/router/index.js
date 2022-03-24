@@ -2,10 +2,9 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import HomeView from "@/views/HomeView.vue";
 import Login from "@/views/LoginView.vue";
+import store from "@/store";
 
 Vue.use(VueRouter);
-
-let user = false;
 
 const routes = [
   {
@@ -14,7 +13,7 @@ const routes = [
     component: Login,
     beforeEnter(to, from, next) {
       // if (store.state.userIsLoggedIn) {
-      if (user) {
+      if (store.state.isUserLoggedIn) {
         next("/");
       } else {
         next();
@@ -26,7 +25,7 @@ const routes = [
     name: "home",
     component: HomeView,
     beforeEnter(to, from, next) {
-      if (user) {
+      if (store.state.isUserLo) {
         next();
       } else {
         next("/login");
