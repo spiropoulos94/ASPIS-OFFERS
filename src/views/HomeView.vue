@@ -234,12 +234,7 @@
     <!-- <small>
       <pre style="text-align: start">{{ offers }}</pre>
     </small> -->
-    <el-dialog
-      title="Προσφορά"
-      :visible.sync="mailDialogVisible"
-      width="80%"
-      :before-close="handleClose"
-    >
+    <el-dialog title="Προσφορά" :visible.sync="mailDialogVisible" width="80%">
       <el-input disabled placeholder="Recipient" v-model="mailTextContent.to">
       </el-input>
       <el-input

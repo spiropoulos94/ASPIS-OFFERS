@@ -4,7 +4,12 @@ import HomeView from "@/views/HomeView.vue";
 import Login from "@/views/LoginView.vue";
 import store from "@/store";
 
+console.log({ store }, "mesa sto router");
+console.log(store.state.userIsLoggedIn, "mesa sto router");
+
 Vue.use(VueRouter);
+
+// let user = false;
 
 const routes = [
   {
@@ -13,7 +18,7 @@ const routes = [
     component: Login,
     beforeEnter(to, from, next) {
       // if (store.state.userIsLoggedIn) {
-      if (store.state.isUserLoggedIn) {
+      if (store.state.userIsLoggedIn === true) {
         next("/");
       } else {
         next();
@@ -25,7 +30,7 @@ const routes = [
     name: "home",
     component: HomeView,
     beforeEnter(to, from, next) {
-      if (store.state.isUserLoggedIn) {
+      if (store.state.userIsLoggedIn === true) {
         next();
       } else {
         next("/login");
