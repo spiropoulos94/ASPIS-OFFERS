@@ -25,19 +25,19 @@ const routes = [
     name: "home",
     component: HomeView,
     beforeEnter(to, from, next) {
-      if (store.state.isUserLo) {
+      if (store.state.isUserLoggedIn) {
         next();
       } else {
         next("/login");
       }
     },
   },
-  {
-    path: "*",
-    beforeEnter(to, from, next) {
-      next("/");
-    },
-  },
+  // {
+  //   path: "*",
+  //   beforeEnter(to, from, next) {
+  //     next("/");
+  //   },
+  // },
 ];
 
 const router = new VueRouter({
