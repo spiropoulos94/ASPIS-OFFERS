@@ -7,10 +7,14 @@
     <el-card class="card">
       <el-form>
         <el-form-item label="email">
-          <el-input v-model="formData.email"></el-input>
+          <el-input clearable v-model="formData.email"></el-input>
         </el-form-item>
         <el-form-item label="password">
-          <el-input type="password" v-model="formData.password"></el-input>
+          <el-input
+            clearable
+            type="password"
+            v-model="formData.password"
+          ></el-input>
         </el-form-item>
       </el-form>
       <el-button plain type="success">Login</el-button>
