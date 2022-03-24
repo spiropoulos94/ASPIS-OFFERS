@@ -9,7 +9,7 @@ const storage = window.sessionStorage;
 const persistedState = (storage) => {
   const state = storage.getItem("state");
 
-  if (JSON.parse(state)) {
+  if (state) {
     console.log("state found in storage");
     return JSON.parse(state);
   } else {
