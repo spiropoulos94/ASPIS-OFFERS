@@ -2,6 +2,8 @@
   <div class="home">
     <div class="navbar">
       <span class="logo">ASPIS Apolymantikh Vasileiou - Offers</span>
+      <el-button @click="$store.commit('logout')">Log out</el-button>
+
       <!-- <div class="delete-mode">
         <i class="el-icon-delete"></i>
         <span>Delete Mode:</span>

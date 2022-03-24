@@ -20,7 +20,7 @@ export default new Vuex.Store({
     },
     logout(state) {
       state.userIsLoggedIn = false;
-      router.push("/");
+      router.push("/login");
     },
   },
   actions: {},
