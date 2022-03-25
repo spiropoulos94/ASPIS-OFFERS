@@ -19,6 +19,7 @@
       </el-form>
       <el-button
         :icon="isLoading ? 'el-icon-loading' : ''"
+        :disabled="isLoading"
         @click="login"
         plain
         type="success"
