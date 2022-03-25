@@ -17,7 +17,13 @@
           ></el-input>
         </el-form-item>
       </el-form>
-      <el-button @click="login" plain type="success">Login</el-button>
+      <el-button
+        :icon="isLoading ? 'el-icon-loading' : ''"
+        @click="login"
+        plain
+        type="success"
+        >{{ isLoading ? "Please wait" : "Log in" }}</el-button
+      >
     </el-card>
   </div>
 </template>
@@ -36,12 +42,14 @@ export default {
         password: "",
       },
       auth,
+      isLoading: false,
     };
   },
 
   methods: {
     login() {
       // let auth = getAuth(app);
+      this.isLoading = true;
       signInWithEmailAndPassword(
         this.auth,
         this.formData.email,
@@ -56,7 +64,24 @@ export default {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
+          let customErrorMessage = "";
           console.log(errorCode, errorMessage);
+
+          switch (errorCode) {
+            case "auth/user-not-found":
+              customErrorMessage = "User not found";
+              break;
+            case "auth/wrong-password":
+              customErrorMessage = "Wrong password";
+              break;
+          }
+
+          this.$notify.error({
+            title: "Error",
+            message: customErrorMessage,
+          });
+
+          this.isLoading = false;
         });
     },
   },
