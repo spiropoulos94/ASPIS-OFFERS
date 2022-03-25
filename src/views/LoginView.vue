@@ -48,9 +48,14 @@ export default {
   margin: auto;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 450px) {
   .card {
     margin: 0px 15px;
+  }
+}
+@media (min-width: 600px) {
+  .login {
+    margin-top: 10em;
   }
 }
 </style>
