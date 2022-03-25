@@ -17,12 +17,15 @@
           ></el-input>
         </el-form-item>
       </el-form>
-      <el-button plain type="success">Login</el-button>
+      <el-button @click="login" plain type="success">Login</el-button>
     </el-card>
   </div>
 </template>
 
 <script>
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/utils/firebase.js";
+
 export default {
   name: "LoginView",
   components: {},
@@ -32,10 +35,29 @@ export default {
         email: "",
         password: "",
       },
+      auth,
     };
   },
-  created() {
-    console.log(process.env);
+
+  methods: {
+    login() {
+      // let auth = getAuth(app);
+      signInWithEmailAndPassword(
+        this.auth,
+        this.formData.email,
+        this.formData.password
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log({ user });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode, errorMessage);
+        });
+    },
   },
 };
 </script>
