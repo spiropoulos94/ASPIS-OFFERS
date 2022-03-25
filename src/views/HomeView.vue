@@ -10,7 +10,9 @@
         <el-switch active-color="#F56C6C" v-model="deleteMode"> </el-switch>
       </div> -->
     </div>
-    <h3 v-if="!offers.length">You have no offers at the moment...</h3>
+    <h3 style="margin: 3em" v-if="!offers.length">
+      You have no offers at the moment...
+    </h3>
     <el-form label-position="top">
       <div
         class="offer"
@@ -29,7 +31,7 @@
         <el-form-item class="client" :label="0 ? Client : ''">
           <el-select
             v-model="offers[oindex].client"
-            style="width: 450px"
+            style="max-width: 450px"
             placeholder="Select client"
             value-key="id"
           >
@@ -214,7 +216,7 @@
     <el-row>
       <el-button
         v-if="!offers.length"
-        style="width: 500px"
+        style="max-width: 500px; min-width: 300px"
         icon="el-icon-plus"
         plain
         type="primary"
@@ -224,7 +226,7 @@
       >
       <el-button
         v-if="offers.length && offers[0].services.length"
-        style="width: 500px"
+        style="max-width: 500px; min-width: 300px"
         icon="el-icon-edit-outline"
         plain
         type="success"
