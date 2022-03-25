@@ -20,6 +20,7 @@ const persistedState = (storage) => {
 
 let initialState = {
   userIsLoggedIn: false,
+  user: null,
 };
 
 let store = new Vuex.Store({
@@ -33,12 +34,14 @@ let store = new Vuex.Store({
     },
   },
   mutations: {
-    login(state) {
+    login(state, payload) {
       state.userIsLoggedIn = true;
+      state.user = payload;
       router.push("/");
     },
     logout(state) {
       state.userIsLoggedIn = false;
+      state.user = null;
       router.push("/login");
     },
     updatePersistedState(state, storage) {

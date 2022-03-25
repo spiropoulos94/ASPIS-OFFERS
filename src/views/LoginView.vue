@@ -51,6 +51,7 @@ export default {
           // Signed in
           const user = userCredential.user;
           console.log({ user });
+          this.$store.commit("login", { email: user.email, id: user.uid });
         })
         .catch((error) => {
           const errorCode = error.code;
