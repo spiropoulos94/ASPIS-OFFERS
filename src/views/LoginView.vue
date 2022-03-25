@@ -48,6 +48,13 @@ export default {
   margin: auto;
 }
 
+@media (max-width: 330px) {
+  .logo-img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
 @media (max-width: 450px) {
   .card {
     margin: 0px 15px;
