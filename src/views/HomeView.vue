@@ -2,7 +2,12 @@
   <div class="home">
     <div class="navbar">
       <span class="logo">ASPIS Apolymantikh Vasileiou - Offers</span>
-      <el-button @click="$store.commit('logout')">Log out</el-button>
+      <el-button
+        size="small"
+        class="navbar-btn"
+        @click="$store.commit('logout')"
+        >Log out</el-button
+      >
 
       <!-- <div class="delete-mode">
         <i class="el-icon-delete"></i>
@@ -551,7 +556,7 @@ $logo-green-light: #5a8864;
   top: 0;
   left: 0;
   right: 0;
-  background: $logo-orange;
+  background: red;
   // border-bottom: 5px solid $logo-green;
   z-index: 9999;
   justify-content: space-between;
