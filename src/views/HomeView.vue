@@ -6,8 +6,10 @@
         size="small"
         class="navbar-btn"
         @click="$store.commit('logout')"
-        >Log out</el-button
+        circle
       >
+        <img width="16px" src="@/assets/svg/right-from-bracket-solid.svg"
+      /></el-button>
 
       <!-- <div class="delete-mode">
         <i class="el-icon-delete"></i>
