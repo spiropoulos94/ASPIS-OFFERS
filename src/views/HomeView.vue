@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="navbar">
-      <span class="logo">ASPIS Apolymantikh Vasileiou - Offers</span>
+      <span class="logo">ASPIS - Offers</span>
       <el-button
         size="small"
         class="navbar-btn"
